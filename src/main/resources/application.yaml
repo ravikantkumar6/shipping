@@ -1,0 +1,30 @@
+server:
+  port: 9003
+spring:
+  webflux:
+    base-path: /api/shipping/v1
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/shipping
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httptrace,loggers,health,info,metrics
+  endpoint:
+    loggers:
+      enabled: true
+
+springdoc:
+  api-docs:
+    enabled: true
+logging:
+  level:
+    org:
+      springframework:
+        r2dbc: DEBUG
